@@ -1,0 +1,173 @@
+#:include KV files/settings.kv
+#:include KV files/tutorial.kv
+#:import C kivy.utils.get_color_from_hex
+
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+ScreenManager:
+    transition: NoTransition()
+
+    Screen:
+        id: bg
+        name: "main_screen"
+        MDScreen:
+            FitImage:
+                source:"images/mount-mayon-blue-sky-philippines.jpg"
+
+            BoxLayout:
+                padding: 16.5,0,16.5,0
+                orientation: "vertical"
+
+                BoxLayout:
+                    orientation: "horizontal"
+                    size_hint: 1, .13
+                    pos_hint: {'center_x': .5,'top': 1}
+
+                    AnchorLayout:
+                        anchor_x: 'left'
+                        anchor_y: 'center'
+                        Label:
+                            text: "SALINGUAHE"
+                            font_size: 16
+                            font_name: 'Nunito'
+                            size_hint: None, None
+                            color: "f4f5fa"
+
+                    AnchorLayout:
+                        anchor_x: 'right'
+                        anchor_y: 'center'
+                        MDIconButton:
+                            id: settings
+                            icon: "Images/cog2.png"
+                            icon_size: 3
+                            size_hint: None, None
+                            on_press: app.root.current = "settings"
+
+                    Label: #spacer
+                        size_hint: .05, None
+                            
+                BoxLayout:
+                    size_hint: 1, .65
+                    pos_hint: {'center_x': .5,'center_y': 1}
+                    orientation: "vertical"
+
+                    MDCard:
+                        size_hint: 1, .397
+                        pos_hint: {'center_x': .5,'top': 1}
+                        md_bg_color: (25/255,29/255,42/255,.25)
+                        radius:dp(19)
+
+                        FloatLayout:  
+                            TextInput:
+                                id: input
+                                hint_text: "INPUT HERE"
+                                font_name: 'Nunito'
+                                hint_text_color: "#ffffff"
+                                halign: "center"
+                                background_normal: ""
+                                background_active: ""
+                                background_color: (0,0,0,0)
+                                multiline: False
+                                cursor_color: "#ffffff"
+                                foreground_color: "ffffff"
+                                pos_hint: {'center_x': .5,'center_y': .5}
+                                size_hint: .8,.25
+
+                    BoxLayout:
+                        size_hint: 1, .206
+                        pos_hint: {'center_x': .5,'center_y': 1}
+
+                        MDCard:
+                            size_hint: .6,.55
+                            pos_hint: {'x': 1,'center_y': .5}
+                            md_bg_color: C("#4fe3c1")
+                            radius:dp(23)
+                            ripple_behavior: True
+                            on_release: app.menu.open()
+
+                            FloatLayout:
+                                Label:
+                                    id: dialects1 #dialect drop down on left
+                                    font_size: 13
+                                    font_name: 'Nunito'
+                                    color: "#192744"
+                                    pos_hint: {'center_x': .5,'center_y': .5}
+
+                        MDCard:
+                            on_release: app.switch()
+                            md_bg_color: (0,0,0,0)
+                            size_hint: .3, 1
+                            Image:
+                                source: 'images/switch.png'
+                                size_hint: .5, .5
+                                pos_hint: {'center_x': 0.5,'center_y': 0.5}
+
+                        MDCard:
+                            size_hint: .6,.55
+                            pos_hint: {'x': 1,'center_y': .5}
+                            md_bg_color: C("#4fe3c1")
+                            radius:dp(23)
+                            ripple_behavior: True
+                            on_release: app.menu1.open()
+
+                            FloatLayout:
+                                Label:
+                                    id: dialects2 #dialect drop down on left
+                                    font_size: 13
+                                    font_name: 'Nunito'
+                                    color: "#192744"
+                                    pos_hint: {'center_x': .5,'center_y': .5}
+                        
+                    MDCard:
+                        size_hint: 1, .397
+                        pos_hint: {'center_x': .5,'y': 1}
+                        md_bg_color: (25/255,29/255,42/255,.25)
+                        radius:dp(19)
+
+                        FloatLayout:
+                            Label:
+                                id: output
+                                text: "OUTPUT HERE"
+                                font_name: 'Nunito'
+                                color: "#ffffff"
+                                pos_hint: {'center_x': .5,'center_y': .5}
+                                size_hint: .8,.25
+
+                BoxLayout:
+                    size_hint: 1, .22
+                    pos_hint: {'center_x': .5,'y': 1}
+                    orientation: "horizontal"
+                    spacing: 15
+                    padding: 25,0,25,0
+
+                    AnchorLayout:
+                        anchor_x: 'left'  
+                        anchor_y: 'center'
+                        MDIconButton:
+                            id: help
+                            icon: "images/Help.png"
+                            icon_size: "20" 
+                            halign: "center"
+                            on_press: app.root.current = "tutorial"
+                    AnchorLayout:
+                        anchor_x: 'center'  
+                        anchor_y: 'center'
+                        MDIconButton:
+                            id: translate
+                            icon: "images/Translate.png"
+                            icon_size: "50" 
+                            halign: "center"
+                            on_press: app.translate()
+                    AnchorLayout:
+                        anchor_x: 'right'  
+                        anchor_y: 'center'    
+                        MDIconButton:
+                            id: clear
+                            icon: "images/Clear.png"
+                            icon_size: "20"
+                            on_press: app.clear()
+                        
+
+
+    SettingsScreen:
+    TutorialScreen:

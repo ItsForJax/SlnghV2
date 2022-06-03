@@ -1,0 +1,15 @@
+#:import C kivy.utils.get_color_from_hex
+
+<SettingsScreen@Screen>:
+    name: 'settings'
+    MDScreen:
+        FitImage:
+            source:"Images/Salinguahe.jpg"
+        BoxLayout:
+            orientation: "vertical"
+            FloatLayout:
+                Button:
+                    text: "Return"
+                    size_hint: .2, .1
+                    pos_hint: {'center_x': 0.5,'center_y': 0.2}
+                    on_press: app.root.current = "main_screen"

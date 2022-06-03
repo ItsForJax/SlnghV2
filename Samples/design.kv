@@ -1,0 +1,210 @@
+#:import C kivy.utils.get_color_from_hex
+
+MDScreen:
+    md_bg_color: C("#192744")
+    GridLayout:
+        cols: 1
+        spacing: 10
+        padding: 17,10,17,10
+        size_hint: None,None
+        size: root.width, root.height
+
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: 1, None
+            height: 50
+
+            AnchorLayout:
+                anchor_x: 'left'
+                anchor_y: 'center'
+                Label:
+                    text: "SALINGUAHE"
+                    font_size: 17
+                    font_name: 'Nunito'
+                    color: "f4f5fa"
+
+            AnchorLayout:
+                anchor_x: 'right'
+                anchor_y: 'center'  
+
+                MDIconButton:
+                    id: settings
+                    icon: 'images/cog2.png'
+                    icon_size: 5
+                    on_press: app.settings()
+  
+
+        MDCard:
+            md_bg_color: C("#404b6b")
+            padding:dp(15)
+            spacing:dp(15)
+            radius:dp(20)
+            size_hint: (1,.4)
+            #height: 100
+    
+            BoxLayout:
+                orientation: "vertical"
+                Label:
+                    text: ""
+
+                TextInput:
+                    id: userinput
+                    hint_text: "INPUT HERE"
+                    font_name: 'Nunito'
+                    color: "#8b96a8"
+                    halign: "center"
+                    background_normal: ""
+                    background_active: ""
+                    background_color: "#404b6b"
+                    size_hint: (None, None)
+                    pos_hint: {'center_x': 0.5,'center_y': 0} 
+                    height: "40dp"
+                    width: "150dp"
+                    multiline: False
+                    cursor_color: "#f4f5fa"
+                    foreground_color: "808080"
+
+                Label:
+                    text: ""
+                
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 1, None
+            height: 50
+            AnchorLayout:
+                anchor_x: 'right'
+                anchor_y: 'center'
+                MDCard:
+                    md_bg_color: C("#4fe3c1")
+                    padding:dp(15)
+                    spacing:dp(15)
+                    radius:dp(25)
+                    size_hint: (1,.9)
+                    ripple_behavior: True
+                    on_release: app.menu.open()
+                    #height: 100
+                    
+                    BoxLayout:
+                        orientation: "vertical"
+                        Label:
+                            text: ""
+
+                        Label:
+                            id: field
+                            font_name: 'Nunito'
+                            font_size: 13
+                            color: "#192744"
+                            background_normal: ""
+                            background_active: ""
+                            background_color: "#4fe3c1"
+
+                        Label:
+                            text: ""
+                    
+                #MDCard:
+                    #md_bg_color: C("#74ffe0")
+                    #radius:dp(20)
+                    #pos_hint: {'center_x': 0.5,'center_y': 1}
+                    
+
+            AnchorLayout:
+                anchor_x: 'center'
+                anchor_y: 'center'
+                MDCard:
+                    on_release: app.switchL()
+                    md_bg_color: C("#192744")
+                    FitImage:
+                        source: 'images/switch.png'
+                        size_hint: 1, 1
+                      
+
+            AnchorLayout:
+                anchor_x: 'right'
+                anchor_y: 'center'
+                MDCard:
+                    md_bg_color: C("#4fe3c1")
+                    padding:dp(15)
+                    spacing:dp(15)
+                    radius:dp(25)
+                    size_hint: (1,.9)
+                    ripple_behavior: True
+                    on_release: app.menu1.open()
+                    
+                    
+                    BoxLayout:
+                        orientation: "vertical"
+                        Label:
+                            text: ""
+
+                        Label:
+                            id: field1
+                            font_name: 'Nunito'
+                            font_size: 13
+                            color: "#192744"
+                            background_normal: ""
+                            background_active: ""
+                            background_color: "#4fe3c1"
+
+                        Label:
+                            text: ""
+                    
+                    
+                            
+        MDCard:
+            md_bg_color: C("#404b6b")
+            padding:dp(15)
+            spacing:dp(15)
+            radius:dp(20)
+            size_hint: (1,.4)
+            #height: 152
+
+            Label:
+                text: ""
+            Label:
+                id: output
+                text: "OUTPUT HERE"
+                halign: "center"
+                font_name: 'Nunito'
+                color: "#808080"
+            Label:
+                text: ""
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint: .2, None
+            height: 100
+            spacing: 15
+            padding: 20,0,20,0
+            halign: "center"
+            AnchorLayout:
+                anchor_x: 'left'  
+                anchor_y: 'center'
+                MDIconButton:
+                    id: help
+                    icon: "images/Help.png"
+                    icon_size: "20" 
+                    halign: "center"
+            AnchorLayout:
+                anchor_x: 'center'  
+                anchor_y: 'center'
+                MDIconButton:
+                    id: translate
+                    icon: "images/Translate.png"
+                    icon_size: "50" 
+                    halign: "center"
+                    on_press: app.translate()
+            AnchorLayout:
+                anchor_x: 'right'  
+                anchor_y: 'center'    
+                MDIconButton:
+                    id: clear
+                    icon: "images/Clear.png"
+                    icon_size: "20"
+                    on_press: app.clear()
+                
+                    
+                    
+        
+                
+
